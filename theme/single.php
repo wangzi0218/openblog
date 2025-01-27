@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="container py-8">
+<div class="container single-post py-8">
     <?php while (have_posts()) : the_post(); ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class('bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden'); ?>>
             <?php if (has_post_thumbnail()) : ?>
@@ -44,7 +44,7 @@
                     </div>
                 </header>
 
-                <div class="prose dark:prose-invert max-w-none">
+                <div class="prose dark:prose-invert max-w-none md:prose-xl">
                     <?php the_content(); ?>
                 </div>
 
@@ -106,14 +106,6 @@
                 </footer>
             </div>
         </article>
-
-        <?php
-        // If comments are open or we have at least one comment, load up the comment template.
-        if (comments_open() || get_comments_number()) :
-            comments_template();
-        endif;
-        ?>
-
     <?php endwhile; ?>
 </div>
 
