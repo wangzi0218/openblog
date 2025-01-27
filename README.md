@@ -10,15 +10,23 @@ A modern WordPress theme based on the blog-template by danielcgilibert. This the
 
 ```
 openblog/
-├── theme/              # WordPress theme files
-│   ├── css/           # CSS files
-│   ├── js/            # JavaScript files
-│   ├── fonts/         # Font files
-│   ├── *.php          # PHP template files
-│   ├── style.css      # Main theme stylesheet
-│   └── tailwind.config.js
-├── package.json       # Project dependencies
-└── README.md         # Project documentation
+├── theme/                  # WordPress theme files
+│   ├── css/               # CSS files
+│   │   └── tailwind.css   # Tailwind source file
+│   ├── js/                # JavaScript files
+│   │   └── theme.js       # Theme JavaScript
+│   ├── archive.php        # Archive template
+│   ├── comments.php       # Comments template
+│   ├── footer.php         # Footer template
+│   ├── functions.php      # Theme functions
+│   ├── header.php         # Header template
+│   ├── index.php          # Main template
+│   ├── page.php          # Page template
+│   ├── single.php        # Single post template
+│   ├── style.css         # Main theme stylesheet
+│   └── tailwind.config.js # Tailwind configuration
+├── package.json           # Project dependencies
+└── README.md             # Project documentation
 ```
 
 ### Comparison with Original Template
@@ -52,15 +60,23 @@ openblog/
 
 ```
 openblog/
-├── theme/              # WordPress 主题文件
-│   ├── css/           # CSS 文件
-│   ├── js/            # JavaScript 文件
-│   ├── fonts/         # 字体文件
-│   ├── *.php          # PHP 模板文件
-│   ├── style.css      # 主题样式表
-│   └── tailwind.config.js
-├── package.json       # 项目依赖
-└── README.md         # 项目文档
+├── theme/                  # WordPress 主题文件
+│   ├── css/               # CSS 文件
+│   │   └── tailwind.css   # Tailwind 源文件
+│   ├── js/                # JavaScript 文件
+│   │   └── theme.js       # 主题 JavaScript
+│   ├── archive.php        # 归档模板
+│   ├── comments.php       # 评论模板
+│   ├── footer.php         # 页脚模板
+│   ├── functions.php      # 主题函数
+│   ├── header.php         # 页头模板
+│   ├── index.php          # 主模板
+│   ├── page.php          # 页面模板
+│   ├── single.php        # 单文章模板
+│   ├── style.css         # 主题样式表
+│   └── tailwind.config.js # Tailwind 配置
+├── package.json           # 项目依赖
+└── README.md             # 项目文档
 ```
 
 ### 与原模板对比
@@ -76,15 +92,15 @@ openblog/
 
 ### 核心特性
 
-- 🎨 继承原模板的现代简洁设计
-- 📱 全响应式布局，完美适配各种设备
-- 🌓 深色模式支持，平滑切换效果
-- 🎯 WordPress 优化的 SEO 支持
-- 🚀 轻量快速的主题架构
-- 💅 使用 Tailwind CSS 实现现代化样式
-- 📝 清晰的排版和阅读体验
-- 🔌 完整的 WordPress 功能集成
-- 🛠️ 通过 WordPress 定制器轻松自定义
+- 继承原模板的现代简洁设计
+- 全响应式布局，完美适配各种设备
+- 深色模式支持，平滑切换效果
+- WordPress 优化的 SEO 支持
+- 轻量快速的主题架构
+- 使用 Tailwind CSS 实现现代化样式
+- 清晰的排版和阅读体验
+- 完整的 WordPress 功能集成
+- 通过 WordPress 定制器轻松自定义
 
 ## Installation | 安装方法
 
@@ -98,6 +114,73 @@ openblog/
    通过 WordPress 定制器自定义主题设置
 
 ## Development | 开发
+
+### Local Development with WordPress | 本地 WordPress 开发
+
+1. Install Local WordPress | 安装 Local WordPress
+   - Download and install [Local](https://localwp.com/)
+   - Create a new WordPress site
+
+2. Link Theme for Development | 链接主题进行开发
+   ```bash
+   # Find your Local WordPress themes directory
+   # It might be in one of these locations:
+   # - ~/Library/Application Support/Local/run/[site-name]/app/public/wp-content/themes/
+   # - ~/.local/share/Local/run/[site-name]/app/public/wp-content/themes/
+   # - [Local installation path]/[site-name]/app/public/wp-content/themes/
+   
+   # Create symbolic link (replace [themes-path] with your actual path)
+   ln -s /path/to/your/openblog/theme [themes-path]/openblog
+   ```
+
+3. Development Workflow | 开发工作流
+   ```bash
+   # Install dependencies
+   npm install
+   
+   # Start development server (watches for CSS changes)
+   npm run dev
+   ```
+
+   The development server will:
+   - Watch for changes in PHP files and automatically compile any new Tailwind CSS classes
+   - Watch for changes in CSS files and recompile automatically
+   - Hot reload CSS changes in the browser
+
+4. Development Best Practices | 开发最佳实践
+   - Always keep `npm run dev` running while developing
+   - Any new Tailwind CSS classes in PHP files will be automatically detected and compiled
+   - Changes to PHP files will be reflected immediately in WordPress
+   - Test all changes in both light and dark modes
+   - Check responsive design using browser dev tools
+
+5. Testing | 测试
+   - Activate the theme in WordPress admin
+   - Changes to PHP files will be reflected immediately
+   - New CSS classes will be compiled automatically when running `npm run dev`
+   - Test all features:
+     - Navigation menus
+     - Widget areas
+     - Comments
+     - Archive pages
+     - Single posts and pages
+     - Responsive design
+     - Dark mode
+
+### Building for Production | 生产环境构建
+
+```bash
+# Install dependencies
+npm install
+
+# Build CSS for production
+npm run build
+
+# Create theme zip file
+cd theme && zip -r ../openblog.zip . && cd ..
+```
+
+The generated `openblog.zip` can be installed on any WordPress site.
 
 To work on the theme locally | 本地开发：
 
