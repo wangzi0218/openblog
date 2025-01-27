@@ -7,8 +7,8 @@
     "url": "https://github.com/wangzi0218/openblog"
   },
   "scripts": {
-    "dev": "tailwindcss -i ./css/tailwind.css -o ./style.css --watch",
-    "build": "tailwindcss -i ./css/tailwind.css -o ./style.css --minify"
+    "dev": "tailwindcss -i ./theme/css/tailwind.css -o ./theme/style.css --watch",
+    "build": "tailwindcss -i ./theme/css/tailwind.css -o ./theme/style.css --minify"
   },
   "keywords": [
     "wordpress",

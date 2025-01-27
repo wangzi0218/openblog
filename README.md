@@ -6,6 +6,21 @@
 
 A modern WordPress theme based on the blog-template by danielcgilibert. This theme transforms the original static blog template into a fully functional WordPress theme, making it more accessible and easier to use for content creators.
 
+### Project Structure
+
+```
+openblog/
+├── theme/              # WordPress theme files
+│   ├── css/           # CSS files
+│   ├── js/            # JavaScript files
+│   ├── fonts/         # Font files
+│   ├── *.php          # PHP template files
+│   ├── style.css      # Main theme stylesheet
+│   └── tailwind.config.js
+├── package.json       # Project dependencies
+└── README.md         # Project documentation
+```
+
 ### Comparison with Original Template
 
 | Feature | Original Template | OpenBlog WordPress Theme |
@@ -32,6 +47,21 @@ A modern WordPress theme based on the blog-template by danielcgilibert. This the
 <h2 id="chinese">中文说明</h2>
 
 这是一个基于 danielcgilibert 的 blog-template 改造的现代 WordPress 主题。我们将原始的静态博客模板转换为功能完整的 WordPress 主题，使其更易于内容创作者使用。
+
+### 项目结构
+
+```
+openblog/
+├── theme/              # WordPress 主题文件
+│   ├── css/           # CSS 文件
+│   ├── js/            # JavaScript 文件
+│   ├── fonts/         # 字体文件
+│   ├── *.php          # PHP 模板文件
+│   ├── style.css      # 主题样式表
+│   └── tailwind.config.js
+├── package.json       # 项目依赖
+└── README.md         # 项目文档
+```
 
 ### 与原模板对比
 
