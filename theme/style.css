@@ -24,21 +24,36 @@ Text Domain: openblog
     --zinc-900: #18181b;
     --zinc-950: #09090b;
 
+    /* Light mode */
     --background: var(--zinc-50);
     --background-secondary: var(--zinc-100);
     --foreground: var(--zinc-900);
     --muted: var(--zinc-500);
     --muted-foreground: var(--zinc-600);
     --border: var(--zinc-200);
+    --card: var(--zinc-50);
+    --card-foreground: var(--zinc-900);
 }
 
+/* Dark mode */
 .dark {
-    --background: var(--zinc-950);
-    --background-secondary: var(--zinc-900);
-    --foreground: var(--zinc-50);
-    --muted: var(--zinc-800);
-    --muted-foreground: var(--zinc-400);
+    --background: #0A090F;
+    --background-secondary: #0A090F;
+    --foreground: var(--zinc-100);
+    --muted: var(--zinc-700);
+    --muted-foreground: var(--zinc-300);
     --border: var(--zinc-800);
+    --card: #0A090F;
+    --card-foreground: var(--zinc-100);
+}
+
+/* Override Tailwind dark mode colors */
+.dark [class*="dark\:bg-"] {
+    background-color: var(--background) !important;
+}
+
+.dark [class*="dark\:text-"] {
+    color: var(--foreground) !important;
 }
 
 /* Base */
@@ -164,11 +179,11 @@ body {
 
 /* Dark mode overrides */
 .dark {
-    --background: var(--zinc-950);
-    --background-secondary: var(--zinc-900);
-    --foreground: var(--zinc-50);
-    --muted: var(--zinc-800);
-    --muted-foreground: var(--zinc-400);
+    --background: #0A090F;
+    --background-secondary: #0A090F;
+    --foreground: var(--zinc-100);
+    --muted: var(--zinc-700);
+    --muted-foreground: var(--zinc-300);
     --border: var(--zinc-800);
 }
 
@@ -392,7 +407,7 @@ h5, h6 {
 
 /* Enhanced Article Cards */
 article {
-    background-color: var(--background);
+    background-color: var(--card);
     border: 1px solid var(--border);
     border-radius: 0.75rem;
     overflow: hidden;
@@ -605,11 +620,12 @@ article:hover {
     }
 
     article {
-        background-color: var(--background);
+        background-color: var(--card);
         border: 1px solid var(--border);
         border-radius: 0.75rem;
         overflow: hidden;
         transition: transform 0.2s ease-in-out;
+        color: var(--card-foreground);
     }
 
     article:hover {
@@ -691,7 +707,7 @@ article:hover {
 }
 
 .home article {
-    background-color: var(--background);
+    background-color: var(--card);
     border: 1px solid var(--border);
     border-radius: 0.5rem;
     overflow: hidden;
@@ -699,6 +715,7 @@ article:hover {
     height: 100%;
     display: flex;
     flex-direction: column;
+    color: var(--card-foreground);
 }
 
 .home article .aspect-video {
@@ -731,7 +748,7 @@ article:hover {
 }
 
 .home article h2 a {
-    color: var(--foreground);
+    color: var(--card-foreground);
     text-decoration: none;
     transition: color 0.2s;
 }
