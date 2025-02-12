@@ -1,32 +1,59 @@
 <?php get_header(); ?>
 
-<div class="container py-8">
-    <header class="mb-8">
-        <h1 class="text-3xl font-bold mb-2">
+<div class="container">
+    <!-- Archive Title -->
+    <h1 class="text-5xl font-semibold tracking-wide text-center mb-8 title">
+        <?php
+        if (is_category()) {
+            single_cat_title();
+        } elseif (is_tag()) {
+            single_tag_title('#');
+        } elseif (is_author()) {
+            the_author();
+        } elseif (is_date()) {
+            if (is_day()) {
+                printf(__('Daily Archives: %s', 'openblog'), get_the_date());
+            } elseif (is_month()) {
+                printf(__('Monthly Archives: %s', 'openblog'), get_the_date('F Y'));
+            } elseif (is_year()) {
+                printf(__('Yearly Archives: %s', 'openblog'), get_the_date('Y'));
+            }
+        } else {
+            _e('Archives', 'openblog');
+        }
+        ?>
+    </h1>
+
+    <?php if (is_tag() || is_category()) : ?>
+        <!-- All Tags/Categories List -->
+        <div class="flex gap-4 flex-wrap justify-center items-center mb-8">
             <?php
-            if (is_category()) {
-                single_cat_title(__('Category: ', 'openblog'));
-            } elseif (is_tag()) {
-                single_tag_title(__('Tag: ', 'openblog'));
-            } elseif (is_author()) {
-                the_author_meta('display_name');
-            } elseif (is_date()) {
-                if (is_day()) {
-                    printf(__('Daily Archives: %s', 'openblog'), get_the_date());
-                } elseif (is_month()) {
-                    printf(__('Monthly Archives: %s', 'openblog'), get_the_date('F Y'));
-                } elseif (is_year()) {
-                    printf(__('Yearly Archives: %s', 'openblog'), get_the_date('Y'));
+            if (is_tag()) {
+                $terms = get_tags(array(
+                    'orderby' => 'name',
+                    'order'   => 'ASC'
+                ));
+                foreach ($terms as $term) {
+                    $class = get_query_var('tag') === $term->slug ? 'bg-primary text-white' : 'bg-neutral-100 dark:bg-neutral-800';
+                    echo '<a href="' . get_tag_link($term->term_id) . '" class="text-sm px-4 py-2 hover:text-opacity-60 rounded-lg ' . $class . '">';
+                    echo '#' . esc_html($term->name);
+                    echo '</a>';
+                }
+            } else {
+                $terms = get_categories(array(
+                    'orderby' => 'name',
+                    'order'   => 'ASC'
+                ));
+                foreach ($terms as $term) {
+                    $class = get_query_var('category_name') === $term->slug ? 'bg-primary text-white' : 'bg-neutral-100 dark:bg-neutral-800';
+                    echo '<a href="' . get_category_link($term->term_id) . '" class="text-sm px-4 py-2 hover:text-opacity-60 rounded-lg ' . $class . '">';
+                    echo esc_html($term->name);
+                    echo '</a>';
                 }
             }
             ?>
-        </h1>
-        <?php if (is_author()) : ?>
-            <div class="text-gray-600 dark:text-gray-400">
-                <?php echo get_the_author_meta('description'); ?>
-            </div>
-        <?php endif; ?>
-    </header>
+        </div>
+    <?php endif; ?>
 
     <?php if (have_posts()) : ?>
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

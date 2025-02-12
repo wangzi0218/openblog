@@ -26,17 +26,35 @@ module.exports = {
     },
     extend: {
       colors: {
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#b9e6fe',
-          300: '#7cd4fd',
-          400: '#36c3fa',
-          500: '#0caaeb',
-          600: '#0088c2',
-          700: '#006d9a',
-          800: '#005b80',
-          900: '#004a68',
+          DEFAULT: "#0066FF",
+          foreground: "var(--background)",
+        },
+        secondary: {
+          DEFAULT: "#FF6B6B",
+          foreground: "var(--muted-foreground)",
+        },
+        muted: {
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-foreground)",
+        },
+        zinc: {
+          50: '#fafafa',
+          100: '#f4f4f5',
+          200: '#e4e4e7',
+          300: '#d4d4d8',
+          400: '#a1a1aa',
+          500: '#71717a',
+          600: '#52525b',
+          700: '#3f3f46',
+          800: '#27272a',
+          900: '#18181b',
+          950: '#09090b',
         },
       },
       fontFamily: {
@@ -45,36 +63,91 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
-            maxWidth: 'none',
-            color: 'inherit',
+            '--tw-prose-body': 'var(--foreground)',
+            '--tw-prose-headings': 'var(--foreground)',
+            '--tw-prose-lead': 'var(--muted-foreground)',
+            '--tw-prose-links': 'var(--foreground)',
+            '--tw-prose-bold': 'var(--foreground)',
+            '--tw-prose-counters': 'var(--muted)',
+            '--tw-prose-bullets': 'var(--muted)',
+            '--tw-prose-hr': 'var(--border)',
+            '--tw-prose-quotes': 'var(--foreground)',
+            '--tw-prose-quote-borders': 'var(--border)',
+            '--tw-prose-captions': 'var(--muted-foreground)',
+            '--tw-prose-code': 'var(--foreground)',
+            '--tw-prose-pre-code': 'var(--foreground)',
+            '--tw-prose-pre-bg': 'var(--muted)',
+            '--tw-prose-th-borders': 'var(--border)',
+            '--tw-prose-td-borders': 'var(--border)',
+            'code::before': {
+              content: '""'
+            },
+            'code::after': {
+              content: '""'
+            },
+            color: '#1a202c',
             a: {
-              color: 'inherit',
-              textDecoration: 'none',
-              fontWeight: '500',
+              color: '#1a202c',
+              '&:hover': {
+                color: '#4a5568',
+              },
             },
             h1: {
-              color: 'inherit',
+              color: '#1a202c',
             },
             h2: {
-              color: 'inherit',
+              color: '#1a202c',
             },
             h3: {
-              color: 'inherit',
+              color: '#1a202c',
             },
             h4: {
-              color: 'inherit',
+              color: '#1a202c',
             },
-            h5: {
-              color: 'inherit',
+          },
+        },
+        dark: {
+          css: {
+            '--tw-prose-body': 'var(--foreground)',
+            '--tw-prose-headings': 'var(--foreground)',
+            '--tw-prose-lead': 'var(--muted-foreground)',
+            '--tw-prose-links': 'var(--foreground)',
+            '--tw-prose-bold': 'var(--foreground)',
+            '--tw-prose-counters': 'var(--muted)',
+            '--tw-prose-bullets': 'var(--muted)',
+            '--tw-prose-hr': 'var(--border)',
+            '--tw-prose-quotes': 'var(--foreground)',
+            '--tw-prose-quote-borders': 'var(--border)',
+            '--tw-prose-captions': 'var(--muted-foreground)',
+            '--tw-prose-code': 'var(--foreground)',
+            '--tw-prose-pre-code': 'var(--foreground)',
+            '--tw-prose-pre-bg': 'var(--muted)',
+            '--tw-prose-th-borders': 'var(--border)',
+            '--tw-prose-td-borders': 'var(--border)',
+            'code::before': {
+              content: '""'
             },
-            h6: {
-              color: 'inherit',
+            'code::after': {
+              content: '""'
             },
-            code: {
-              color: 'inherit',
+            color: '#f7fafc',
+            a: {
+              color: '#f7fafc',
+              '&:hover': {
+                color: '#e2e8f0',
+              },
             },
-            strong: {
-              color: 'inherit',
+            h1: {
+              color: '#f7fafc',
+            },
+            h2: {
+              color: '#f7fafc',
+            },
+            h3: {
+              color: '#f7fafc',
+            },
+            h4: {
+              color: '#f7fafc',
             },
           },
         },
